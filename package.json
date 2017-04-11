@@ -1,0 +1,35 @@
+{
+  "name": "nodejs-url_shortener",
+  "version": "1.0.0",
+  "description": "URL shortener",
+  "main": "server.js",
+  "scripts": {
+    "start":"node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ashniu123/nodejs-url_shortener.git"
+  },
+  "keywords": [
+    "URL",
+    "Shortener",
+    "freecodecamp",
+    "heroku",
+    "mLab",
+    "MongoDB",
+    "NodeJs"
+  ],
+  "author": "ashniu123",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ashniu123/nodejs-url_shortener/issues"
+  },
+  "homepage": "https://github.com/Ashniu123/nodejs-url_shortener#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  },
+  "engines": {
+    "node": "6.9.4"
+  }
+}
