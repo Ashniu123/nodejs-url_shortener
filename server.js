@@ -4,7 +4,7 @@ var app = express();
 
 var port = process.env.PORT || 8080;
 
-var mongoUrl=process.env.MONGOLAB_URI;
+var mongoUrl=process.env.MONGOLAB_URI||"mongodb://localhost:27017/url-shortener";
 
 mongoose.connect(mongoUrl);
 var db = mongoose.connection;
