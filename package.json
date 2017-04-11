@@ -4,7 +4,7 @@
   "description": "URL shortener",
   "main": "server.js",
   "scripts": {
-    "start":"node server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,7 +27,8 @@
   },
   "homepage": "https://github.com/Ashniu123/nodejs-url_shortener#readme",
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "mongoose": "^4.9.4"
   },
   "engines": {
     "node": "6.9.4"
