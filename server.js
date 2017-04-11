@@ -4,7 +4,8 @@ var app = express();
 
 var port = process.env.PORT || 8080;
 
-var mongoUrl="mongodb://ds159220.mlab.com:59220/url-shortener";
+var mongoUrl=process.env.MONGOLAB_URI;
+
 mongoose.connect(mongoUrl);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
