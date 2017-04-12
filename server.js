@@ -50,7 +50,7 @@ app.get('/urls',function(req,res){
     var json={},output="";
     urlmon.find({},{original_url:1,short_url:1,_id:0},function (err,data) {
         if(err) throw err;
-        res.status(200).end(data.toString());
+        res.json(data);
     });
 });
 
@@ -79,7 +79,7 @@ app.get('/new/*',function(req,res){
                     if (err) throw err;
                 });
             }
-            res.send(JSON.stringify(json));
+            res.json(json);
         });
     }else{
         res.status(400).end("Invalid Url");
@@ -108,7 +108,7 @@ app.get('/:number',function(req,res){
                     res.status(400).end("This Url does not exist!");
                 }
             }else{
-                res.status(200).end("Database is empty!");
+                res.status(400).end("This Url does not exist!");
             }
         });
    }else{
