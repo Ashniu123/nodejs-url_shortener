@@ -19,9 +19,9 @@ app.get('/',function(req,res){
 Run at <a href="/new" target="_blank" style="background: #f9f2f4;color: #c7254e">`+req.headers["x-forwarded-proto"]+`://`+req.headers.host+`/new/https://google.com</a>
 </p>
 <div>Example creation output:
-<p style="color: lightcoral;margin: 20px;">{ "original_url":"https://google.com", "short_url":"`+req.headers["x-forwarded-proto"]+`://`+req.headers.host`/8170"}</p>
+<p style="color: lightcoral;margin: 20px;">{ "original_url":"https://google.com", "short_url":"`+req.headers["x-forwarded-proto"]+`://`+req.headers.host+`/8170"}</p>
 Usage:
-<p style="color: lightcoral;margin: 20px;">`+req.headers["x-forwarded-proto"]+`://`+req.headers.host`/8170</p>
+<p style="color: lightcoral;margin: 20px;">`+req.headers["x-forwarded-proto"]+`://`+req.headers.host+`/8170</p>
 Will redirect to:
 <p style="color: lightcoral;margin: 20px;">https://google.com</p>
 </div>
