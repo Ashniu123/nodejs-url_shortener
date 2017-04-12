@@ -3,8 +3,7 @@ var mongoose=require('mongoose');
 var app = express();
 
 var port = process.env.PORT || 8080;
-
-var mongoUrl=process.env.MONGOLAB_URI||"mongodb://localhost:27017/url-shortener";
+var mongoUrl=process.env.MONGOLAB_URI||"mongodb://"+process.env.IP+":27017/url-shortener"||"mongodb://localhost:27017/url-shortener";
 
 mongoose.connect(mongoUrl);
 var db = mongoose.connection;
@@ -49,14 +48,9 @@ Will redirect to:
 
 app.get('/urls',function(req,res){
     var json={},output="";
-    urlmon.find({},function (err,data) {
+    urlmon.find({},{original_url:1,short_url:1,_id:0},function (err,data) {
         if(err) throw err;
-        data.forEach(function (val){
-            json.original_url=val.original_url;
-            json.short_url=val.short_url;
-            output=output+JSON.stringify(json)+"<br>";
-        });
-        res.send(output);
+        res.status(200).end(data.toString());
     });
 });
 
@@ -64,6 +58,7 @@ app.get('/new/*',function(req,res){
     var url=req.originalUrl.slice(5),json={},number = Math.floor(Math.random() * 1000);
     if(/^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:[/?#]\S*)?$/i.test(url)){
         urlmon.find({}, function (err, data) {
+            if(err) throw err;
             var flag=1;
             data.forEach(function (val) {
                 if (val.original_url == url) {
