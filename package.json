@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/Ashniu123/nodejs-url_shortener#readme",
   "dependencies": {
-    "express": "4.17.1",
+    "express": "4.17.3",
     "mongodb": "3.6.2",
     "mongoose": "5.10.6"
   },
